@@ -1,7 +1,7 @@
 import { useEffect, FC, useState } from "react";
 import TodoItem from "./TodoItem";
 import "../styles/Todo.css"
-import { Container, Button, Flex, Box, Combobox, InputBase, Group, Input } from '@mantine/core';
+import { Container, Button, Flex, Box, Combobox, Group, Input } from '@mantine/core';
 import { modals } from '@mantine/modals';
 import { TodoModel } from "./Modal";
 import { useTodoFunctions } from "utils/functions";
