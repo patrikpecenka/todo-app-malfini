@@ -1,9 +1,10 @@
-import AppShell from './AppShell'
 import '@mantine/core/styles.css';
-
+import { BrowserRouter } from 'react-router-dom'
 import { createTheme, MantineProvider } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals'
+import { Notifications } from '@mantine/notifications';
 import { AddItemModal } from 'components/Modal';
+import { RootRouter } from 'routers/root.router';
 
 const theme = createTheme({
   fontFamily: 'Open Sans, sans-serif',
@@ -13,8 +14,11 @@ const theme = createTheme({
 function App() {
   return (
     <MantineProvider theme={theme} >
+      <Notifications position="top-right" />
       <ModalsProvider modals={{ addItem: AddItemModal }}>
-        <AppShell />
+        <BrowserRouter>
+          <RootRouter />
+        </BrowserRouter>
       </ModalsProvider>
     </MantineProvider >
   )

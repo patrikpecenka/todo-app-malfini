@@ -2,11 +2,15 @@ import { FunctionComponent } from 'react';
 import { Button, Input, Textarea } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { ContextModalProps } from '@mantine/modals'
+import { useAuthStore } from 'store/auth.store';
 
 export interface TodoModel {
   title: string;
   description: string;
   checkbox: boolean;
+  time: string;
+  position: number;
+  userId: string;
 }
 
 interface ModalAddTodoProps {
@@ -15,11 +19,16 @@ interface ModalAddTodoProps {
 }
 
 export const AddItemModal: FunctionComponent<ContextModalProps<ModalAddTodoProps>> = ({ id, context, innerProps }) => {
+  const { userData } = useAuthStore();
+
   const form = useForm({
     initialValues: {
       title: "",
       description: "",
       checkbox: false,
+      time: "",
+      position: 0,
+      userId: userData?.uid ?? '',
       ...typeof innerProps.editTodo === 'undefined' ? {} : innerProps.editTodo,
     },
     validate: {
