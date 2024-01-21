@@ -4,10 +4,10 @@ import "../styles/Todo.css"
 import { Container, Button, Flex, Box, Combobox, InputBase, Group } from '@mantine/core';
 import { modals } from '@mantine/modals';
 import { TodoModel } from "./Modal";
-import { ItemsProps, useTodoFunctions } from "utils/functions";
+import { useTodoFunctions } from "utils/functions";
 
 
-const Todo: FC<ItemsProps> = () => {
+const Todo: FC = () => {
   const {
     todoItems,
     setTodoItems,
