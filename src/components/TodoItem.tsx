@@ -3,8 +3,6 @@ import Icon from '@mdi/react';
 import { mdiTrashCanOutline, mdiPencil } from '@mdi/js';
 import "../styles/TodoItem.css"
 
-
-
 interface TodoItemProps {
   text: string,
   description: string,
@@ -16,11 +14,8 @@ interface TodoItemProps {
 }
 
 const TodoItem = ({ text, description, deleteItem, editItem, time, toggleCheckbox, checked }: TodoItemProps) => {
-
-
-
   return (
-    <Box>
+    <Box w="100%">
       <Flex justify="space-between" align="center" mb={10} className="item" >
         <Box
           bg="#cce1f3"

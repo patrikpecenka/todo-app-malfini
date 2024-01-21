@@ -1,10 +1,12 @@
 import { useEffect, FC, useState } from "react";
 import TodoItem from "./TodoItem";
 import "../styles/Todo.css"
-import { Container, Button, Flex, Box, Combobox, InputBase, Group } from '@mantine/core';
+import { Container, Button, Flex, Box, Combobox, InputBase, Group, Input } from '@mantine/core';
 import { modals } from '@mantine/modals';
 import { TodoModel } from "./Modal";
 import { useTodoFunctions } from "utils/functions";
+import Icon from '@mdi/react';
+import { mdiMagnify } from '@mdi/js';
 
 
 const Todo: FC = () => {
@@ -18,13 +20,15 @@ const Todo: FC = () => {
   } = useTodoFunctions();
 
   const [visibilityFilter, setVisibilityFilter] = useState<string>('all');
+  const [searchTerm, setSearchTerm] = useState<string>("")
 
   const filteredItems = todoItems.filter(item => {
     if (visibilityFilter === 'all') return true;
     if (visibilityFilter === 'active') return !item.checkbox;
     if (visibilityFilter === 'completed') return item.checkbox;
     return false;
-  });
+  })
+    .filter(item => item.title.toLowerCase().includes(searchTerm.toLowerCase()));
 
   //on first load check the local storage for any stored items
   useEffect(() => {
@@ -55,8 +59,8 @@ const Todo: FC = () => {
           Add new todo
         </Button>
       </div>
-      <Box w="100%" p={20}>
-        <Group>
+      <Flex w="100%" p={20} justify="center" >
+        <Group gap={15}>
           {['all', 'active', 'completed'].map(filter => (
             <Button
               key={filter}
@@ -67,19 +71,25 @@ const Todo: FC = () => {
               {filter.charAt(0).toUpperCase() + filter.slice(1)}
             </Button>
           ))}
+          <Combobox >
+            <Input
+              placeholder="write sum"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              leftSection={<Icon path={mdiMagnify} size={1} />}
+            >
+            </Input>
 
-          <Combobox>
-            <InputBase placeholder="write sum" ></InputBase>
           </Combobox>
         </Group>
-      </Box>
+      </Flex>
       <Flex
         direction="column"
         wrap="wrap"
         className="items"
       >
         {filteredItems.map((item, index) => (
-          <Box key={index} w={500}>
+          <Box key={index} w={510}>
             <TodoItem
               time={item.time}
               text={item.title}
