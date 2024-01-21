@@ -1,4 +1,4 @@
-import Todo from "components/Todo"
+import Todo from "components/TodoList"
 
 const AppShell = () => {
   return (
