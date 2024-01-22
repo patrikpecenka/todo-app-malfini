@@ -3,6 +3,7 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 import { auth } from '../services/firebase';
 import { User, signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword } from 'firebase/auth';
 import { notifications } from '@mantine/notifications';
+import classes from "../styles/Error.module.css"
 
 interface AuthStore {
   userData: User | null,
@@ -42,6 +43,9 @@ export const useAuthStore = create(
           notifications.show({
             title: 'Failed to log in',
             message: (error as Error).message,
+            autoClose: 5000,
+            color: 'red',
+            classNames: classes,
           });
           console.error(error);
           return false;

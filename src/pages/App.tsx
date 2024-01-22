@@ -1,4 +1,5 @@
 import '@mantine/core/styles.css';
+import '@mantine/notifications/styles.css';
 import { BrowserRouter } from 'react-router-dom'
 import { createTheme, MantineProvider } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals'
@@ -14,9 +15,10 @@ const theme = createTheme({
 function App() {
   return (
     <MantineProvider theme={theme} >
-      <Notifications position="top-right" />
       <ModalsProvider modals={{ addItem: AddItemModal }}>
         <BrowserRouter>
+          <Notifications position="bottom-center" />
+
           <RootRouter />
         </BrowserRouter>
       </ModalsProvider>

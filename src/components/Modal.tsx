@@ -57,6 +57,7 @@ export const AddItemModal: FunctionComponent<ContextModalProps<ModalAddTodoProps
           />
         </Input.Wrapper>
         <Textarea
+          style={{ whiteSpace: "pre-line" }}
           size="lg"
           radius="xs"
           label="Description"

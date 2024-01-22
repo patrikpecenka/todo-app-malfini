@@ -75,7 +75,6 @@ export const Login = () => {
           </Stack>
         </Box>
       </Paper>
-
     </Flex>
   );
 };

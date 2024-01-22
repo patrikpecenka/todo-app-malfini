@@ -6,7 +6,7 @@ import { modals } from '@mantine/modals';
 import { TodoModel } from "../components/Modal";
 import useTodoFunctions from "utils/todoLogic";
 import Icon from '@mdi/react';
-import { mdiMagnify, mdiLogout, mdiPlus } from '@mdi/js';
+import { mdiMagnify, mdiPlus } from '@mdi/js';
 import { db } from "services/firebase"
 import { query, collection, onSnapshot, orderBy, where } from "firebase/firestore"
 import { ItemsProps } from "utils/todoLogic";
@@ -14,6 +14,7 @@ import { useAuthStore } from "store/auth.store";
 import { IconSun, IconMoon } from '@tabler/icons-react';
 import cx from 'clsx';
 import classes from "../styles/SchemeIcon.module.css"
+import ExitButtonModal from "components/ExitButtonModal";
 
 
 const TodoList: FC = () => {
@@ -58,7 +59,7 @@ const TodoList: FC = () => {
 
   return (
     <Flex direction="column" align="center" w="100%" h="100vh" mt={30}>
-      <Box maw="700">
+      <Box maw="580px">
         <Flex w="100%" justify="space-between" pl={20} pr={20}>
           <Text variant="gradient" gradient={{ from: 'rgba(108, 170, 171, 1)', to: 'rgba(121, 179, 158, 1)', deg: 51 }} size="58px">T o d o.</Text>
           <Group>
@@ -71,11 +72,12 @@ const TodoList: FC = () => {
               <IconSun className={cx(classes.icon, classes.light)} stroke={1.5} />
               <IconMoon className={cx(classes.icon, classes.dark)} stroke={1.5} />
             </ActionIcon>
-            <Button
+            <ExitButtonModal confirm={logout} />
+            {/* <Button
               w="auto"
               onClick={logout} >
               <Icon path={mdiLogout} size={1} />
-            </Button>
+            </Button> */}
           </Group>
         </Flex>
 

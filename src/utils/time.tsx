@@ -5,15 +5,21 @@ export interface FormattedTime {
 export const getFormattedTime = (): FormattedTime => {
   const currentTime = new Date();
 
-  const options: Intl.DateTimeFormatOptions = {
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric',
+  const timeOptions: Intl.DateTimeFormatOptions = {
     hour: 'numeric',
     minute: 'numeric',
   };
 
+  const dateOptions: Intl.DateTimeFormatOptions = {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  };
+
+  const formattedTime = currentTime.toLocaleString('en-UK', timeOptions);
+  const formattedDate = currentTime.toLocaleString('en-UK', dateOptions);
+
   return {
-    formattedTime: currentTime.toLocaleString('en-UK', options),
+    formattedTime: `${formattedTime}, ${formattedDate}`,
   };
 };
