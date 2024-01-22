@@ -60,7 +60,7 @@ const TodoList: FC = () => {
     <Flex direction="column" align="center" w="100%" h="100vh" mt={30}>
       <Box maw="700">
         <Flex w="100%" justify="space-between" pl={20} pr={20}>
-          <Text variant="gradient" gradient={{ from: 'rgba(108, 170, 171, 1)', to: 'rgba(121, 179, 158, 1)', deg: 51 }} size="60px">T o d o .</Text>
+          <Text variant="gradient" gradient={{ from: 'rgba(108, 170, 171, 1)', to: 'rgba(121, 179, 158, 1)', deg: 51 }} size="58px">T o d o.</Text>
           <Group>
             <ActionIcon
               onClick={() => setColorScheme(computedColorScheme === 'light' ? 'dark' : 'light')}
