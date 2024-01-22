@@ -59,7 +59,7 @@ const TodoList: FC = () => {
   return (
     <Flex direction="column" align="center" w="100%" h="100vh" mt={30}>
       <Box maw="700">
-        <Flex w="100%" justify="space-between">
+        <Flex w="100%" justify="space-between" pl={20} pr={20}>
           <Text c="grey" size="60px">TODO</Text>
           <Group>
             <ActionIcon
@@ -85,7 +85,7 @@ const TodoList: FC = () => {
             fullWidth
             leftSection={iconPlus}
             rightSection={<span />}
-            w="100%"
+            w="95%"
             mt={20}
             size="lg"
             variant="outline"
@@ -151,96 +151,4 @@ const TodoList: FC = () => {
   )
 }
 
-{/* <Button bg="#AAD7D9" onClick={logout} >
-  <Icon path={mdiLogout} size={1} />
-</Button> */}
-
-{/* <Input.Wrapper label="Search listing" w="100%">
-  <Input
-    placeholder="write sum"
-    value={searchTerm}
-    onChange={(e) => setSearchTerm(e.target.value)}
-    leftSection={<Icon path={mdiMagnify} size={1} />}
-  >
-  </Input>
-</Input.Wrapper> */}
-
-/* <Flex w="100%" h="100vh" direction="row" bg="white" m={0} p={0}>
-        <Box w={500} m={0} p={0} style={{ borderRight: "solid 2px grey" }} pt={30}>
-          <Flex direction="column" justify="start" align="center" ml={20} mr={20} h="100%" gap={30}>
-            <Flex justify="space-between" align="center" w="100%">
-              <Title order={1} size="50px">TODO</Title>
-
-            </Flex>
-            <Combobox >
-              <Input.Wrapper label="Search listing" w="100%">
-                <Input
-                  placeholder="write sum"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  leftSection={<Icon path={mdiMagnify} size={1} />}
-                >
-                </Input>
-              </Input.Wrapper>
-            </Combobox>
-            <Flex w="100%" p={20} justify="center" >
-              <Group gap={15}>
-                {['all', 'active', 'completed'].map(filter => (
-                  <Button
-                    key={filter}
-                    onClick={() => setVisibilityFilter(filter)}
-                    variant={visibilityFilter === filter ? "gradient" : "light"}
-                    gradient={{ from: 'violet', to: 'cyan', deg: 90 }}
-                  >
-                    {filter.charAt(0).toUpperCase() + filter.slice(1)}
-                  </Button>
-                ))}
-              </Group>
-            </Flex>
-          </Flex>
-        </Box>
-
-        <Flex className='todo-wrapper' w="40%" p="xl" h="100vh" bg="white">
-          <Button
-            justify="space-between"
-            fullWidth
-            rightSection={icon}
-            leftSection={<span />}
-            variant="outline"
-            mt="md"
-
-            onClick={() =>
-              modals.openContextModal({
-                modal: "addItem",
-                title: "Add Item",
-                innerProps: {
-                  onSelect: (formData: TodoModel) => {
-                    createTodoItem(formData.title, formData.description, formData.time, formData.userId)
-                  }
-                }
-              })
-            }
-          >
-            Press to add new listing
-          </Button>
-          <Flex justify="center" direction="column" >
-            {filteredItems.map((item, index) => (
-              <Box key={index} m={10}>
-                <TodoItem
-                  time={item.time}
-                  text={item.title}
-                  checked={item.checkbox}
-                  description={item.description}
-                  deleteItem={() => deleteTodoItem(item.id)}
-                  editItem={() => getItemForEdit(item.id)}
-                  toggleCheckbox={() => toggleCheckbox(item.id, !item.checkbox)}
-                />
-              </Box>
-            ))}
-          </Flex>
-          <Box >
-            <Title order={4}> {"Number of items: " + filteredItems.length}</Title>
-          </Box>
-        </Flex>
-      </Flex> */
 export default TodoList

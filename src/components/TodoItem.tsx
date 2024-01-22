@@ -78,62 +78,6 @@ const TodoItem = ({ text, description, deleteItem, editItem, time, toggleCheckbo
         {opened ? <Icon path={mdiChevronDown} size={1} /> : <Icon path={mdiChevronRight} size={1} />}
       </Box>
     </Flex >
-
-
-
-
-    /* <Box w="100%" >
-     <Flex justify="space-between"
-   //     align="center"
-   //     mb={10}
-   //     w="100%"
-   //   >
-   //     <Paper shadow="xl" radius="xl" p="xl" withBorder style={{ border: "solid 1px grey" }}  >
-   //       <Group
-   //         gap={0}
-   //         w="100%"
-   //       >
-   // <Flex justify="space-between" align="center" w="100%" >
-   //   <Flex align="center">
-   //     <Checkbox
-   //       radius="xl"
-   //       iconColor="white"
-   //       size="20"
-   //       m={10}
-   //       checked={checked}
-   //       onChange={toggleCheckbox}
-   //     />
-   //     <Text
-   //       fw={700}
-   //       size="lg"
-   //       c={checked ? "dimmed" : ""}
-   //       td={checked ? "line-through" : ""}
-   //     >
-   //       {text}
-   //     </Text>
-   //   </Flex>
-   //   <Flex gap={10} mt={10} mr={10}>
-   //     <Button onClick={editItem} variant="filled" color="rgba(54, 124, 255, 0.74)" size="xs" radius="lg">
-   //       <Icon path={mdiPencil} size={0.8} color="white" style={{ cursor: "pointer" }} />
-   //     </Button>
-   //     <Button onClick={deleteItem} variant="filled" color="rgba(255, 74, 74, 0.74)" size="xs" radius="lg">
-   //       <Icon path={mdiTrashCanOutline} size={0.8} color="white" style={{ cursor: "pointer" }} />
-   //     </Button>
-   //   </Flex>
-   // </Flex>
-   //         <Flex ml={10} direction="column" w="100%">
-   //           <Text
-   //             c={checked ? "dimmed" : ""}
-   //             td={checked ? "line-through" : ""}
-   //           >
-   //             {description}
-   //           </Text>
-   //           <Text size="xs" c="dimmed" ta="right" mr={12}>{time}</Text>
-   //         </Flex>
-   //       </Group>
-   //     </Paper>
-   //   </Flex>
-   // </Box > */
   )
 }
 
