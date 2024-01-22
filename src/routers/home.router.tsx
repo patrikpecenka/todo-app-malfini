@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import TodoList from 'pages/TodoList';
 import NotFoundPage from 'pages/NotFoundPage';
+import TodoList from 'pages/TodoList';
 
 export const HomeRouter: FC = () => (
 	<Routes>
