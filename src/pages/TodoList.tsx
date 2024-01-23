@@ -16,7 +16,6 @@ import cx from 'clsx';
 import classes from "../styles/SchemeIcon.module.css"
 import ExitButtonModal from "components/ExitButtonModal";
 
-
 const TodoList: FC = () => {
   const {
     toggleCheckbox,
@@ -48,9 +47,9 @@ const TodoList: FC = () => {
   useEffect(() => {
     const q = query(collection(db, "todos"), where('userId', '==', userData?.uid), orderBy('position'));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const items: any = []
+      const items: ItemsProps[] = []
       querySnapshot.forEach((doc) => {
-        items.push({ ...doc.data(), id: doc.id })
+        items.push({ ...doc.data(), id: doc.id } as ItemsProps);
       });
       setTodoItems(items)
     })
@@ -73,11 +72,6 @@ const TodoList: FC = () => {
               <IconMoon className={cx(classes.icon, classes.dark)} stroke={1.5} />
             </ActionIcon>
             <ExitButtonModal confirm={logout} />
-            {/* <Button
-              w="auto"
-              onClick={logout} >
-              <Icon path={mdiLogout} size={1} />
-            </Button> */}
           </Group>
         </Flex>
 

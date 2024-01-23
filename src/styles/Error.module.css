@@ -14,7 +14,7 @@
 .closeButton {
   color: var(--mantine-color-white);
 
-  @mixin hover {
+  :hover {
     background-color: rgba(0, 0, 0, 0.1);
   }
 }

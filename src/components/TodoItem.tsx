@@ -4,7 +4,7 @@ import { mdiTrashCanOutline, mdiPencil, mdiChevronRight, mdiChevronDown } from '
 import "../styles/TodoItem.css"
 import { useDisclosure } from "@mantine/hooks";
 
-interface TodoItemProps {
+export interface TodoItemProps {
   text: string;
   description: string;
   deleteItem: () => void;
