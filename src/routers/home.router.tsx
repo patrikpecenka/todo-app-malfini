@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import NotFoundPage from 'pages/NotFoundPage';
-import TodoList from 'pages/TodoList';
+import TodoList from 'pages/TodoPage';
 import { TempLayout } from 'pages/AppShellPage';
 
 export const HomeRouter: FC = () => (

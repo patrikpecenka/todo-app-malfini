@@ -1,0 +1,27 @@
+{
+  "exit_button": {
+    "title": "Log out",
+    "child_text": "Do you really wanna log out?",
+    "confirm": "Yes, log out",
+    "cancel": "Cancel"
+  },
+  "add_item_modal": {
+    "button_title": "Add New Task",
+    "title": "Add Task",
+    "button_add": "Add",
+    "button_save": "Save",
+    "valid": "Please enter a todo task",
+    "input_title": "Task",
+    "input_ph": "Enter a todo task",
+    "description_title": "Description",
+    "description_ph": "Enter a description"
+  },
+  "sort_buttons": {
+    "all": "All",
+    "active": "Active",
+    "completed": "Completed",
+    "search_ph": "Search by task name",
+    "search_label": "Search tasks",
+    "todo_listed": "Listed Todos: "
+  }
+}

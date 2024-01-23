@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { createTheme, MantineProvider } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals'
 import { Notifications } from '@mantine/notifications';
-import { AddItemModal } from 'components/Modal';
+import { AddItemModal } from 'components/AddItemModal';
 import { RootRouter } from 'routers/root.router';
 
 const theme = createTheme({

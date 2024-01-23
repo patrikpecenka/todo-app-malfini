@@ -3,7 +3,7 @@ import TodoItem from "../components/TodoItem";
 import "../styles/Todo.css"
 import { Button, Flex, Box, Group, Input, Container, Text, Title, useMantineColorScheme, useComputedColorScheme, ActionIcon } from '@mantine/core';
 import { modals } from '@mantine/modals';
-import { TodoModel } from "../components/Modal";
+import { TodoModel } from "../components/AddItemModal";
 import useTodoFunctions from "utils/todoLogic";
 import Icon from '@mdi/react';
 import { mdiMagnify, mdiPlus } from '@mdi/js';
@@ -15,6 +15,8 @@ import { IconSun, IconMoon } from '@tabler/icons-react';
 import cx from 'clsx';
 import classes from "../styles/SchemeIcon.module.css"
 import ExitButtonModal from "components/ExitButtonModal";
+import SwitchButton from "components/SwitchButton";
+import { useTranslation } from "react-i18next";
 
 const TodoList: FC = () => {
   const {
@@ -23,23 +25,26 @@ const TodoList: FC = () => {
     deleteTodoItem,
     getItemForEdit,
   } = useTodoFunctions();
+  const { t } = useTranslation("translation")
 
-  const iconPlus = <Icon path={mdiPlus} size={1} />
-
-  const [visibilityFilter, setVisibilityFilter] = useState<string>('all');
+  const [visibilityFilter, setVisibilityFilter] = useState<string>("All");
   const [searchTerm, setSearchTerm] = useState<string>("")
   const [todoItems, setTodoItems] = useState<ItemsProps[]>([]);
 
   const { userData, logout } = useAuthStore();
-
   const { setColorScheme } = useMantineColorScheme();
   const computedColorScheme = useComputedColorScheme('light', { getInitialValueInEffect: true })
 
+  const iconPlus = <Icon path={mdiPlus} size={1} />
+
+  const handleTogle = (isChecked: boolean) => {
+    !isChecked
+  }
   //FILTERING ITEMS , USED FOR BUTTONS
   const filteredItems = todoItems.filter(item => {
-    if (visibilityFilter === 'all') return true;
-    if (visibilityFilter === 'active') return !item.checkbox;
-    if (visibilityFilter === 'completed') return item.checkbox;
+    if (visibilityFilter === "All") return true;
+    if (visibilityFilter === "Active") return !item.checkbox;
+    if (visibilityFilter === "Complete") return item.checkbox;
     return false;
   }).filter(item => item.title.toLowerCase().includes(searchTerm.toLowerCase()));
 
@@ -71,6 +76,7 @@ const TodoList: FC = () => {
               <IconSun className={cx(classes.icon, classes.light)} stroke={1.5} />
               <IconMoon className={cx(classes.icon, classes.dark)} stroke={1.5} />
             </ActionIcon>
+            <SwitchButton onToggle={handleTogle} />
             <ExitButtonModal confirm={logout} />
           </Group>
         </Flex>
@@ -88,7 +94,7 @@ const TodoList: FC = () => {
             onClick={() =>
               modals.openContextModal({
                 modal: "addItem",
-                title: "Add Item",
+                title: t("add_item_modal.title"),
                 innerProps: {
                   onSelect: (formData: TodoModel) => {
                     createTodoItem(formData.title, formData.description, formData.time, formData.userId)
@@ -97,11 +103,11 @@ const TodoList: FC = () => {
               })
             }
           >
-            Add new todo
+            {t("add_item_modal.button_title")}
           </Button>
           <Flex w="100%" p={20} justify="center" >
             <Group gap={15}>
-              {['all', 'active', 'completed'].map(filter => (
+              {["All", "Active", "Complete"].map(filter => (
                 <Button
                   key={filter}
                   onClick={() => setVisibilityFilter(filter)}
@@ -111,9 +117,9 @@ const TodoList: FC = () => {
                   {filter.charAt(0).toUpperCase() + filter.slice(1)}
                 </Button>
               ))}
-              <Input.Wrapper label="Search listing" w="100%">
+              <Input.Wrapper label={t("sort_buttons.search_label")} w="100%">
                 <Input
-                  placeholder="write sum"
+                  placeholder={t("sort_buttons.search_ph")}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   leftSection={<Icon path={mdiMagnify} size={1} />}
@@ -137,8 +143,8 @@ const TodoList: FC = () => {
               </Box>
             ))}
           </Container>
-          <Title order={2} mt={10}>
-            {"Todos: " + filteredItems.length}
+          <Title order={3} mt={10}>
+            {t("sort_buttons.todo_listed")} {filteredItems.length}
           </Title>
         </Container >
       </Box>

@@ -3,6 +3,7 @@ import { Button, Input, Textarea } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { ContextModalProps } from '@mantine/modals'
 import { useAuthStore } from 'store/auth.store';
+import { useTranslation } from 'react-i18next';
 
 export interface TodoModel {
   title: string;
@@ -20,6 +21,7 @@ interface ModalAddTodoProps {
 
 export const AddItemModal: FunctionComponent<ContextModalProps<ModalAddTodoProps>> = ({ id, context, innerProps }) => {
   const { userData } = useAuthStore();
+  const { t } = useTranslation("translation")
 
   const form = useForm({
     initialValues: {
@@ -32,7 +34,7 @@ export const AddItemModal: FunctionComponent<ContextModalProps<ModalAddTodoProps
       ...typeof innerProps.editTodo === 'undefined' ? {} : innerProps.editTodo,
     },
     validate: {
-      title: (value) => (value === '' ? 'Please enter a todo item' : null),
+      title: (value) => (value === '' ? t("add_item_modal.valid") : null),
     },
     validateInputOnChange: true
   });
@@ -46,13 +48,13 @@ export const AddItemModal: FunctionComponent<ContextModalProps<ModalAddTodoProps
   return (
     <>
       <form onSubmit={form.onSubmit(onSelectButtonClicked)}>
-        <Input.Wrapper label="Title" size="lg" required>
+        <Input.Wrapper label={t("add_item_modal.input_title")} size="lg" required>
           <Input
             w="400"
             color="red"
             size="lg"
             {...form.getInputProps("title")}
-            placeholder="Add todo name..."
+            placeholder={t("add_item_modal.input_ph")}
             mb="20"
           />
         </Input.Wrapper>
@@ -60,18 +62,17 @@ export const AddItemModal: FunctionComponent<ContextModalProps<ModalAddTodoProps
           style={{ whiteSpace: "pre-line" }}
           size="lg"
           radius="xs"
-          label="Description"
-          placeholder="Your description here..."
+          label={t("add_item_modal.description_title")}
+          placeholder={t("add_item_modal.description_ph")}
           {...form.getInputProps("description")}
           mb="20"
         />
         <Button
           type='submit'
           size="lg"
-          variant="gradient"
-          gradient={{ from: 'indigo', to: 'cyan', deg: 201 }}
+          color='cyan'
         >
-          {innerProps.editTodo ? "Save" : "Add"}
+          {innerProps.editTodo ? t("add_item_modal.button_save") : t("add_item_modal.button_add")}
         </Button >
       </form>
     </>

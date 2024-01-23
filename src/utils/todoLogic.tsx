@@ -1,6 +1,6 @@
 import { modals } from '@mantine/modals';
 import { getFormattedTime, FormattedTime } from 'utils/time';
-import { TodoModel } from 'components/Modal';
+import { TodoModel } from 'components/AddItemModal';
 import { db } from 'services/firebase';
 import { collection, addDoc, deleteDoc, doc, updateDoc, getDoc, getDocs } from "firebase/firestore";
 
@@ -95,6 +95,7 @@ const useTodoFunctions = () => {
       console.log('Error:', error);
     }
   };
+
 
   return {
     toggleCheckbox,

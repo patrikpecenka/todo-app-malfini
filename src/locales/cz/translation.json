@@ -1,0 +1,27 @@
+{
+  "exit_button": {
+    "title": "Odhlášení",
+    "child_text": "Opravdu se chcete odhlásit?",
+    "confirm": "Ano, odhlásit",
+    "cancel": "Zrušit"
+  },
+  "add_item_modal": {
+    "button_title": "Přidat Úkol",
+    "title": "Přidat úkol",
+    "button_add": "Přidat",
+    "button_save": "Uložit",
+    "valid": "Prosím zadejte úkol",
+    "input_title": "Úkol",
+    "input_ph": "Zadejte úkol",
+    "description_title": "Popis",
+    "description_ph": "Zadejte popis úkolu"
+  },
+  "sort_buttons": {
+    "all": "Všechny",
+    "active": "Aktivní",
+    "completed": "Hotové",
+    "search_ph": "Hledat podle názvu",
+    "search_label": "Hledat úkoly",
+    "todo_listed": "Počet úkolů: "
+  }
+}

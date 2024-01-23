@@ -3,23 +3,27 @@ import { modals } from '@mantine/modals';
 import { mdiLogout } from "@mdi/js";
 import Icon from "@mdi/react";
 import { FC } from "react";
+import { useTranslation } from "react-i18next";
 
 interface ExitButtonModalProps {
   confirm: () => void;
 }
 
 const ExitButtonModal: FC<ExitButtonModalProps> = ({ confirm }) => {
+
+  const { t } = useTranslation("translation")
+
   const openModal = () => modals.openConfirmModal({
-    title: 'Log out',
+    title: t("exit_button.title"),
     size: 'sm',
     radius: 'md',
     withCloseButton: false,
     children: (
       <Text size="md" >
-        Do you really wanna log out?
+        {t("exit_button.child_text")}
       </Text>
     ),
-    labels: { confirm: 'Yes, log out', cancel: 'Cancel' },
+    labels: { confirm: t("exit_button.confirm"), cancel: t("exit_button.cancel") },
     onConfirm: () => confirm(),
   });
 
